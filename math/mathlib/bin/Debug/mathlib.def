@@ -1,0 +1,21 @@
+EXPORTS
+    _Z10vec2_scale7vector2d @1
+    _Z12vec2_isEqual7vector2S_ @2
+    _Z16vec2_isCollinear7vector2S_ @3
+    _Z17vec2_isOrthogonal7vector2S_ @4
+    _Z18vec2_lengthSquared7vector2 @5
+    _Z8vec2_add7vector2d @6
+    _Z8vec2_dot7vector2S_ @7
+    _Z8vec2_newdd @8
+    _Z8vec2_setP7vector2dd @9
+    _Z8vec2_sub7vector2d @10
+    _Z8vec2_sum7vector2S_ @11
+    _Z9vec2_copyP7vector2S_ @12
+    _Z9vec2_diff7vector2S_ @13
+    _gmonparam @14 DATA
+    _mcleanup @15
+    mcount @16
+    moncontrol @17
+    monstartup @18
+    profil @19
+    profile_ctl @20
