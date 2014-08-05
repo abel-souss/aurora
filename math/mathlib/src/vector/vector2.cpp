@@ -59,17 +59,38 @@ double vec2_dot (const vec2_t vec1_i, const vec2_t vec2_i)
     return vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y;
 }
 
-int vec2_isEqual(const vec2_t vec1_i, const vec2_t vec2_i)
+vec2_t vec2_rotate_deg(const vec2_t vec_i, const double r)
+{
+    double a = math_deg_to_rad(r);
+
+    return vec2_new(math_cos_rad(a) * vec_i.x - math_sin_rad(a) * vec_i.y, math_sin_rad(a) * vec_i.x + math_cos_rad(a) * vec_i.y);
+}
+
+vec2_t vec2_rotate_rad(const vec2_t vec_i, const double r)
+{
+    return vec2_new(math_cos_rad(r) * vec_i.x - math_sin_rad(r) * vec_i.y, math_sin_rad(r) * vec_i.x + math_cos_rad(r) * vec_i.y);
+}
+
+vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const int direct)
+{
+    if (direct) {
+        return vec2_new(-1.f * vec_i.y, vec_i.x);
+    } else {
+        return vec2_new(vec_i.y, -1.f * vec_i.x);
+    }
+}
+
+int vec2_is_equal(const vec2_t vec1_i, const vec2_t vec2_i)
 {
     return (vec1_i.x == vec2_i.x) && (vec1_i.y == vec2_i.y);
 }
 
-int vec2_isCollinear(const vec2_t vec1_i, const vec2_t vec2_i)
+int vec2_is_collinear(const vec2_t vec1_i, const vec2_t vec2_i)
 {
     return (vec1_i.x * vec2_i.y - vec1_i.y * vec2_i.x) == 0.f;
 }
 
-int vec2_isOrthogonal(const vec2_t vec1_i, const vec2_t vec2_i)
+int vec2_is_orthogonal(const vec2_t vec1_i, const vec2_t vec2_i)
 {
     return (vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y) == 0.f;
 }
@@ -80,7 +101,17 @@ void vec2_copy(vec2_t* vec_to_po, const vec2_t vec_from_i)
     vec_to_po->y = vec_from_i.y;
 }
 
-double vec2_lengthSquared(const vec2_t vec_i)
+double vec2_length_squared(const vec2_t vec_i)
 {
     return vec_i.x * vec_i.x + vec_i.y * vec_i.y;
+}
+
+double vec2_length(const vec2_t vec_i)
+{
+    return math_sqrt(vec_i.x * vec_i.x + vec_i.y * vec_i.y);
+}
+
+vec2_t vec2_normalize(const vec2_t vec_i)
+{
+    return vec2_scale(vec_i, 1.f / vec2_length(vec_i));
 }

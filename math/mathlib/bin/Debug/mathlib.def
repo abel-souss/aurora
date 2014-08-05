@@ -1,21 +1,34 @@
 EXPORTS
     _Z10vec2_scale7vector2d @1
-    _Z12vec2_isEqual7vector2S_ @2
-    _Z16vec2_isCollinear7vector2S_ @3
-    _Z17vec2_isOrthogonal7vector2S_ @4
-    _Z18vec2_lengthSquared7vector2 @5
-    _Z8vec2_add7vector2d @6
-    _Z8vec2_dot7vector2S_ @7
-    _Z8vec2_newdd @8
-    _Z8vec2_setP7vector2dd @9
-    _Z8vec2_sub7vector2d @10
-    _Z8vec2_sum7vector2S_ @11
-    _Z9vec2_copyP7vector2S_ @12
-    _Z9vec2_diff7vector2S_ @13
-    _gmonparam @14 DATA
-    _mcleanup @15
-    mcount @16
-    moncontrol @17
-    monstartup @18
-    profil @19
-    profile_ctl @20
+    _Z11vec2_length7vector2 @2
+    _Z12math_cos_degd @3
+    _Z12math_cos_radd @4
+    _Z12math_sin_degd @5
+    _Z12math_sin_radd @6
+    _Z13vec2_is_equal7vector2S_ @7
+    _Z14vec2_normalize7vector2 @8
+    _Z15math_deg_to_radd @9
+    _Z15math_rad_to_degd @10
+    _Z15vec2_rotate_deg7vector2d @11
+    _Z15vec2_rotate_rad7vector2d @12
+    _Z17vec2_is_collinear7vector2S_ @13
+    _Z18math_fast_inv_sqrtf @14
+    _Z18vec2_is_orthogonal7vector2S_ @15
+    _Z19vec2_length_squared7vector2 @16
+    _Z22vec2_rotate_orthogonal7vector2i @17
+    _Z8vec2_add7vector2d @18
+    _Z8vec2_dot7vector2S_ @19
+    _Z8vec2_newdd @20
+    _Z8vec2_setP7vector2dd @21
+    _Z8vec2_sub7vector2d @22
+    _Z8vec2_sum7vector2S_ @23
+    _Z9math_sqrtd @24
+    _Z9vec2_copyP7vector2S_ @25
+    _Z9vec2_diff7vector2S_ @26
+    _gmonparam @27 DATA
+    _mcleanup @28
+    mcount @29
+    moncontrol @30
+    monstartup @31
+    profil @32
+    profile_ctl @33
