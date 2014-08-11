@@ -12,19 +12,19 @@ EXPORTS
     _Z15vec2_rotate_deg7vector2d @11
     _Z15vec2_rotate_rad7vector2d @12
     _Z17vec2_is_collinear7vector2S_ @13
-    _Z18math_fast_inv_sqrtf @14
-    _Z18vec2_is_orthogonal7vector2S_ @15
-    _Z19vec2_length_squared7vector2 @16
-    _Z22vec2_rotate_orthogonal7vector2i @17
-    _Z8vec2_add7vector2d @18
-    _Z8vec2_dot7vector2S_ @19
-    _Z8vec2_newdd @20
-    _Z8vec2_setP7vector2dd @21
-    _Z8vec2_sub7vector2d @22
-    _Z8vec2_sum7vector2S_ @23
-    _Z9math_sqrtd @24
-    _Z9vec2_copyP7vector2S_ @25
-    _Z9vec2_diff7vector2S_ @26
+    _Z18vec2_is_orthogonal7vector2S_ @14
+    _Z19vec2_length_squared7vector2 @15
+    _Z22vec2_rotate_orthogonal7vector2i @16
+    _Z8vec2_add7vector2d @17
+    _Z8vec2_dot7vector2S_ @18
+    _Z8vec2_newdd @19
+    _Z8vec2_setP7vector2dd @20
+    _Z8vec2_sub7vector2d @21
+    _Z8vec2_sum7vector2S_ @22
+    _Z9math_sqrtd @23
+    _Z9vec2_copyP7vector2S_ @24
+    _Z9vec2_diff7vector2S_ @25
+    _Z9vec2_nullv @26
     _gmonparam @27 DATA
     _mcleanup @28
     mcount @29

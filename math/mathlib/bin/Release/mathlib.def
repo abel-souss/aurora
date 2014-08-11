@@ -24,3 +24,4 @@ EXPORTS
     _Z9math_sqrtd @23
     _Z9vec2_copyP7vector2S_ @24
     _Z9vec2_diff7vector2S_ @25
+    _Z9vec2_nullv @26

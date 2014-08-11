@@ -8,6 +8,14 @@ vec2_t vec2_new (const double x_i, double y_i)
     return vec;
 }
 
+vec2_t vec2_null ()
+{
+    vec2_t vec;
+    vec.x = 0.0;
+    vec.y = 0.0;
+    return vec;
+}
+
 void vec2_set (vec2_t* vec_po, const double x_i, const double y_i)
 {
     vec_po->x = x_i;
@@ -74,9 +82,9 @@ vec2_t vec2_rotate_rad(const vec2_t vec_i, const double r)
 vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const int direct)
 {
     if (direct) {
-        return vec2_new(-1.f * vec_i.y, vec_i.x);
+        return vec2_new(-1.0 * vec_i.y, vec_i.x);
     } else {
-        return vec2_new(vec_i.y, -1.f * vec_i.x);
+        return vec2_new(vec_i.y, -1.0 * vec_i.x);
     }
 }
 
@@ -87,12 +95,12 @@ int vec2_is_equal(const vec2_t vec1_i, const vec2_t vec2_i)
 
 int vec2_is_collinear(const vec2_t vec1_i, const vec2_t vec2_i)
 {
-    return (vec1_i.x * vec2_i.y - vec1_i.y * vec2_i.x) == 0.f;
+    return (vec1_i.x * vec2_i.y - vec1_i.y * vec2_i.x) == 0.0;
 }
 
 int vec2_is_orthogonal(const vec2_t vec1_i, const vec2_t vec2_i)
 {
-    return (vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y) == 0.f;
+    return (vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y) == 0.0;
 }
 
 void vec2_copy(vec2_t* vec_to_po, const vec2_t vec_from_i)
@@ -113,5 +121,5 @@ double vec2_length(const vec2_t vec_i)
 
 vec2_t vec2_normalize(const vec2_t vec_i)
 {
-    return vec2_scale(vec_i, 1.f / vec2_length(vec_i));
+    return vec2_scale(vec_i, 1.0 / vec2_length(vec_i));
 }

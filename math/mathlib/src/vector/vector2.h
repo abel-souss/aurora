@@ -10,6 +10,7 @@ typedef struct vector2
 } vec2_t;
 
 vec2_t vec2_new (const double x_i, double y_i);
+vec2_t vec2_null ();
 void vec2_set (vec2_t* vec_po, const double x_i, const double y_i);
 vec2_t vec2_sum (const vec2_t vec1_i, const vec2_t vec2_i);
 vec2_t vec2_diff (const vec2_t vec1_i, const vec2_t vec2_i);
