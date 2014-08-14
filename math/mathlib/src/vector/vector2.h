@@ -1,8 +1,9 @@
-#ifndef math_vecor_2_h
-#define math_vecor_2_h
+#ifndef math_vector_2_h
+#define math_vector_2_h
 
 #include "functions/functions.h"
 #include "constants/constants.h"
+#include <stdlib.h>
 
 typedef struct vector2
 {
@@ -18,9 +19,9 @@ vec2_t vec2_scale (const vec2_t vec_i, const double n_i);
 vec2_t vec2_add (const vec2_t vec_i, const double n_i);
 vec2_t vec2_sub (const vec2_t vec_i, const double n_i);
 double vec2_dot (const vec2_t vec1_i, const vec2_t vec2_i);
-vec2_t vec2_rotate_deg(const vec2_t vec_i, const double r);
-vec2_t vec2_rotate_rad(const vec2_t vec_i, const double r);
-vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const int direct);
+vec2_t vec2_rotate_deg(const vec2_t vec_i, const vec2_t* org_i, const double r);
+vec2_t vec2_rotate_rad(const vec2_t vec_i, const vec2_t* org_i, const double r);
+vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const vec2_t* org_i, const int direct);
 int vec2_is_equal(const vec2_t vec1_i, const vec2_t vec2_i);
 int vec2_is_collinear(const vec2_t vec1_i, const vec2_t vec2_i);
 int vec2_is_orthogonal(const vec2_t vec1_i, const vec2_t vec2_i);

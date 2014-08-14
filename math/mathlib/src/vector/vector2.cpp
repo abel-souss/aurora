@@ -67,25 +67,65 @@ double vec2_dot (const vec2_t vec1_i, const vec2_t vec2_i)
     return vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y;
 }
 
-vec2_t vec2_rotate_deg(const vec2_t vec_i, const double r)
+vec2_t vec2_rotate_deg(const vec2_t vec_i, const vec2_t* org_i, const double r)
 {
     double a = math_deg_to_rad(r);
+    double cosa = math_cos_rad(a);
+    double sina = math_sin_rad(a);
+    vec2_t vec;
 
-    return vec2_new(math_cos_rad(a) * vec_i.x - math_sin_rad(a) * vec_i.y, math_sin_rad(a) * vec_i.x + math_cos_rad(a) * vec_i.y);
-}
-
-vec2_t vec2_rotate_rad(const vec2_t vec_i, const double r)
-{
-    return vec2_new(math_cos_rad(r) * vec_i.x - math_sin_rad(r) * vec_i.y, math_sin_rad(r) * vec_i.x + math_cos_rad(r) * vec_i.y);
-}
-
-vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const int direct)
-{
-    if (direct) {
-        return vec2_new(-1.0 * vec_i.y, vec_i.x);
+    if (org_i != NULL) {
+        vec = vec2_diff(vec_i, *org_i);
+        vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
+        vec = vec2_sum(vec, *org_i);
     } else {
-        return vec2_new(vec_i.y, -1.0 * vec_i.x);
+        vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
     }
+
+    return vec;
+}
+
+vec2_t vec2_rotate_rad(const vec2_t vec_i, const vec2_t* org_i, const double r)
+{
+    double a = r;
+    double cosa = math_cos_rad(a);
+    double sina = math_sin_rad(a);
+    vec2_t vec;
+
+    if (org_i != NULL) {
+        vec = vec2_diff(vec_i, *org_i);
+        vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
+        vec = vec2_sum(vec, *org_i);
+    } else {
+        vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
+    }
+
+    return vec;
+}
+
+vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const vec2_t* org_i, const int direct)
+{
+    vec2_t vec;
+
+    if (direct) {
+        if (org_i != NULL) {
+            vec = vec2_diff(vec_i, *org_i);
+            vec = vec2_new(-1.0 * vec.y, vec.x);
+            vec = vec2_sum(vec, *org_i);
+        } else {
+            vec = vec2_new(-1.0 * vec.y, vec.x);
+        }
+    } else {
+        if (org_i != NULL) {
+            vec = vec2_diff(vec_i, *org_i);
+            vec = vec2_new(vec_i.y, -1.0 * vec_i.x);
+            vec = vec2_sum(vec, *org_i);
+        } else {
+            vec = vec2_new(vec_i.y, -1.0 * vec_i.x);
+        }
+    }
+
+    return vec;
 }
 
 int vec2_is_equal(const vec2_t vec1_i, const vec2_t vec2_i)
