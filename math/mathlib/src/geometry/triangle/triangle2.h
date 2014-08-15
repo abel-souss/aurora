@@ -3,7 +3,7 @@
 
 #include "functions/functions.h"
 #include "constants/constants.h"
-#include "vector/vector.h"
+#include "vector/vector2.h"
 
 typedef struct triangle2
 {

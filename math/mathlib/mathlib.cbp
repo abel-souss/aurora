@@ -48,6 +48,8 @@
 		<Unit filename="src/constants/constants.h" />
 		<Unit filename="src/functions/functions.cpp" />
 		<Unit filename="src/functions/functions.h" />
+		<Unit filename="src/geometry/triangle/triangle2.cpp" />
+		<Unit filename="src/geometry/triangle/triangle2.h" />
 		<Unit filename="src/vector/vector2.cpp" />
 		<Unit filename="src/vector/vector2.h" />
 		<Extensions>

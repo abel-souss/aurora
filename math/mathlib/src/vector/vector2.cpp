@@ -67,7 +67,23 @@ double vec2_dot (const vec2_t vec1_i, const vec2_t vec2_i)
     return vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y;
 }
 
-vec2_t vec2_rotate_deg(const vec2_t vec_i, const vec2_t* org_i, const double r)
+vec2_t vec2_opposite (const vec2_t vec_i)
+{
+    vec2_t vec;
+    vec.x = -1.0 * vec_i.x;
+    vec.y = -1.0 * vec_i.y;
+    return vec;
+}
+
+vec2_t vec2_orthogonal (const vec2_t vec_i)
+{
+    vec2_t vec;
+    vec.x = -1.0 * vec_i.y;
+    vec.y = vec_i.x;
+    return vec;
+}
+
+vec2_t vec2_rotate_deg (const vec2_t vec_i, const vec2_t* org_i, const double r)
 {
     double a = math_deg_to_rad(r);
     double cosa = math_cos_rad(a);
@@ -85,7 +101,7 @@ vec2_t vec2_rotate_deg(const vec2_t vec_i, const vec2_t* org_i, const double r)
     return vec;
 }
 
-vec2_t vec2_rotate_rad(const vec2_t vec_i, const vec2_t* org_i, const double r)
+vec2_t vec2_rotate_rad (const vec2_t vec_i, const vec2_t* org_i, const double r)
 {
     double a = r;
     double cosa = math_cos_rad(a);
@@ -103,7 +119,7 @@ vec2_t vec2_rotate_rad(const vec2_t vec_i, const vec2_t* org_i, const double r)
     return vec;
 }
 
-vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const vec2_t* org_i, const int direct)
+vec2_t vec2_rotate_orthogonal (const vec2_t vec_i, const vec2_t* org_i, const int direct)
 {
     vec2_t vec;
 
@@ -128,38 +144,55 @@ vec2_t vec2_rotate_orthogonal(const vec2_t vec_i, const vec2_t* org_i, const int
     return vec;
 }
 
-int vec2_is_equal(const vec2_t vec1_i, const vec2_t vec2_i)
+vec2_t vec2_rotate_opposite (const vec2_t vec_i, const vec2_t* org_i)
+{
+    vec2_t vec;
+
+    if (org_i != NULL) {
+        vec = vec2_diff(vec_i, *org_i);
+        vec.x = -1.0 * vec.x;
+        vec.y = -1.0 * vec.y;
+        vec = vec2_sum(vec, *org_i);
+    } else {
+        vec.x = -1.0 * vec_i.x;
+        vec.y = -1.0 * vec_i.y;
+    }
+
+    return vec;
+}
+
+int vec2_is_equal (const vec2_t vec1_i, const vec2_t vec2_i)
 {
     return (vec1_i.x == vec2_i.x) && (vec1_i.y == vec2_i.y);
 }
 
-int vec2_is_collinear(const vec2_t vec1_i, const vec2_t vec2_i)
+int vec2_is_collinear (const vec2_t vec1_i, const vec2_t vec2_i)
 {
     return (vec1_i.x * vec2_i.y - vec1_i.y * vec2_i.x) == 0.0;
 }
 
-int vec2_is_orthogonal(const vec2_t vec1_i, const vec2_t vec2_i)
+int vec2_is_orthogonal (const vec2_t vec1_i, const vec2_t vec2_i)
 {
     return (vec1_i.x * vec2_i.x + vec1_i.y * vec2_i.y) == 0.0;
 }
 
-void vec2_copy(vec2_t* vec_to_po, const vec2_t vec_from_i)
+void vec2_copy (vec2_t* vec_to_po, const vec2_t vec_from_i)
 {
     vec_to_po->x = vec_from_i.x;
     vec_to_po->y = vec_from_i.y;
 }
 
-double vec2_length_squared(const vec2_t vec_i)
+double vec2_length_squared (const vec2_t vec_i)
 {
     return vec_i.x * vec_i.x + vec_i.y * vec_i.y;
 }
 
-double vec2_length(const vec2_t vec_i)
+double vec2_length (const vec2_t vec_i)
 {
     return math_sqrt(vec_i.x * vec_i.x + vec_i.y * vec_i.y);
 }
 
-vec2_t vec2_normalize(const vec2_t vec_i)
+vec2_t vec2_normalize (const vec2_t vec_i)
 {
     return vec2_scale(vec_i, 1.0 / vec2_length(vec_i));
 }
