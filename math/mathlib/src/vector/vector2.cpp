@@ -192,6 +192,11 @@ double vec2_length (const vec2_t vec_i)
     return math_sqrt(vec_i.x * vec_i.x + vec_i.y * vec_i.y);
 }
 
+double vec2_distance (const vec2_t vec1_i, const vec2_t vec2_i)
+{
+    return vec2_length(vec2_diff(vec1_i, vec2_i));
+}
+
 vec2_t vec2_normalize (const vec2_t vec_i)
 {
     return vec2_scale(vec_i, 1.0 / vec2_length(vec_i));

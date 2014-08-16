@@ -32,6 +32,7 @@ int vec2_is_orthogonal (const vec2_t vec1_i, const vec2_t vec2_i);
 void vec2_copy (vec2_t* vec_to_po, const vec2_t vec_from_i);
 double vec2_length_squared (const vec2_t vec_i);
 double vec2_length (const vec2_t vec_i);
+double vec2_distance (const vec2_t vec1_i, const vec2_t vec2_i);
 vec2_t vec2_normalize (const vec2_t vec_i);
 
 #endif

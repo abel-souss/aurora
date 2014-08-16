@@ -33,3 +33,95 @@ tri2_t tri2_scale (const tri2_t* tri_pi, const double n_i)
 
     return tri;
 }
+
+double tri2_perimeter (const tri2_t* tri_pi)
+{
+    double sides[3];
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    return sides[0] + sides[1] + sides[2];
+}
+
+double tri2_area (const tri2_t* tri_pi)
+{
+    double sides[3];
+    double s;
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    s = (sides[0] + sides[1] + sides[2]) / 2.0;
+
+    return math_sqrt(s * (s - sides[0]) * (s - sides[1]) * (s - sides[2]));
+}
+
+int tri2_is_valid (const tri2_t* tri_pi)
+{
+    double sides[3];
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    return ((sides[0] + sides[1]) > sides[2]) &&
+           ((sides[0] + sides[2]) > sides[1]) &&
+           ((sides[1] + sides[2]) > sides[0]);
+}
+
+int tri2_is_right (const tri2_t* tri_pi)
+{
+    double sides[3];
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    sides[0] *= sides[0];
+    sides[1] *= sides[1];
+    sides[2] *= sides[2];
+
+    return ((sides[0] + sides[1]) == sides[2]) ||
+           ((sides[0] + sides[2]) == sides[1]) ||
+           ((sides[1] + sides[2]) == sides[0]);
+}
+
+int tri2_is_equilateral (const tri2_t* tri_pi)
+{
+    double sides[3];
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    return (sides[0] == sides[1]) && (sides[0] == sides[2]);
+}
+
+int tri2_is_isosceles (const tri2_t* tri_pi)
+{
+    double sides[3];
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    return (sides[0] == sides[1]) ||
+           (sides[0] == sides[2]) ||
+           (sides[1] == sides[2]);
+}
+
+int tri2_is_scalene (const tri2_t* tri_pi)
+{
+    double sides[3];
+
+    sides[0] = vec2_distance(tri_pi->pts[0], tri_pi->pts[1]);
+    sides[1] = vec2_distance(tri_pi->pts[1], tri_pi->pts[2]);
+    sides[2] = vec2_distance(tri_pi->pts[2], tri_pi->pts[0]);
+
+    return (sides[0] != sides[1]) &&
+           (sides[0] != sides[2]) &&
+           (sides[1] != sides[2]);
+}
