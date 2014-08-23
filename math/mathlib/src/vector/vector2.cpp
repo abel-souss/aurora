@@ -95,7 +95,7 @@ vec2_t vec2_rotate_deg (const vec2_t vec_i, const vec2_t* org_i, const double r)
         vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
         vec = vec2_sum(vec, *org_i);
     } else {
-        vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
+        vec = vec2_new(cosa * vec_i.x - sina * vec_i.y, sina * vec_i.x + cosa * vec_i.y);
     }
 
     return vec;
@@ -113,7 +113,7 @@ vec2_t vec2_rotate_rad (const vec2_t vec_i, const vec2_t* org_i, const double r)
         vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
         vec = vec2_sum(vec, *org_i);
     } else {
-        vec = vec2_new(cosa * vec.x - sina * vec.y, sina * vec.x + cosa * vec.y);
+        vec = vec2_new(cosa * vec_i.x - sina * vec_i.y, sina * vec_i.x + cosa * vec_i.y);
     }
 
     return vec;
@@ -129,12 +129,12 @@ vec2_t vec2_rotate_orthogonal (const vec2_t vec_i, const vec2_t* org_i, const in
             vec = vec2_new(-1.0 * vec.y, vec.x);
             vec = vec2_sum(vec, *org_i);
         } else {
-            vec = vec2_new(-1.0 * vec.y, vec.x);
+            vec = vec2_new(-1.0 * vec_i.y, vec_i.x);
         }
     } else {
         if (org_i != NULL) {
             vec = vec2_diff(vec_i, *org_i);
-            vec = vec2_new(vec_i.y, -1.0 * vec_i.x);
+            vec = vec2_new(vec.y, -1.0 * vec.x);
             vec = vec2_sum(vec, *org_i);
         } else {
             vec = vec2_new(vec_i.y, -1.0 * vec_i.x);

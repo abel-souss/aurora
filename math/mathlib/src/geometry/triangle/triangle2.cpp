@@ -125,3 +125,104 @@ int tri2_is_scalene (const tri2_t* tri_pi)
            (sides[0] != sides[2]) &&
            (sides[1] != sides[2]);
 }
+
+tri2_t tri2_rotate_deg (const tri2_t* tri_pi, const vec2_t* org_i, const double r)
+{
+    double a = math_deg_to_rad(r);
+    double cosa = math_cos_rad(a);
+    double sina = math_sin_rad(a);
+    tri2_t tri;
+    int i = 0;
+
+    if (org_i != NULL) {
+        for (i = 0; i < 3; ++i) {
+            tri.pts[i] = vec2_diff(tri_pi->pts[i], *org_i);
+            tri.pts[i] = vec2_new(cosa * tri.pts[i].x - sina * tri.pts[i].y, sina * tri.pts[i].x + cosa * tri.pts[i].y);
+            tri.pts[i] = vec2_sum(tri.pts[i], *org_i);
+        }
+    } else {
+        for (i = 0; i < 3; ++i) {
+            tri.pts[i] = vec2_new(cosa * tri_pi->pts[i].x - sina * tri_pi->pts[i].y, sina * tri_pi->pts[i].x + cosa * tri_pi->pts[i].y);
+        }
+    }
+
+    return tri;
+}
+
+tri2_t tri2_rotate_rad (const tri2_t* tri_pi, const vec2_t* org_i, const double r)
+{
+    double a = r;
+    double cosa = math_cos_rad(a);
+    double sina = math_sin_rad(a);
+    tri2_t tri;
+    int i = 0;
+
+    if (org_i != NULL) {
+        for (i = 0; i < 3; ++i) {
+            tri.pts[i] = vec2_diff(tri_pi->pts[i], *org_i);
+            tri.pts[i] = vec2_new(cosa * tri.pts[i].x - sina * tri.pts[i].y, sina * tri.pts[i].x + cosa * tri.pts[i].y);
+            tri.pts[i] = vec2_sum(tri.pts[i], *org_i);
+        }
+    } else {
+        for (i = 0; i < 3; ++i) {
+            tri.pts[i] = vec2_new(cosa * tri_pi->pts[i].x - sina * tri_pi->pts[i].y, sina * tri_pi->pts[i].x + cosa * tri_pi->pts[i].y);
+        }
+    }
+
+    return tri;
+}
+
+tri2_t tri2_rotate_orthogonal (const tri2_t* tri_pi, const vec2_t* org_i, const int direct)
+{
+    tri2_t tri;
+    int i = 0;
+
+    if (direct) {
+        if (org_i != NULL) {
+            for (i = 0; i < 3; ++i) {
+                tri.pts[i] = vec2_diff(tri_pi->pts[i], *org_i);
+                tri.pts[i] = vec2_new(-1.0 * tri.pts[i].y, tri.pts[i].x);
+                tri.pts[i] = vec2_sum(tri.pts[i], *org_i);
+            }
+
+        } else {
+            for (i = 0; i < 3; ++i) {
+                tri.pts[i] = vec2_new(-1.0 * tri_pi->pts[i].y, tri_pi->pts[i].x);
+            }
+        }
+    } else {
+        if (org_i != NULL) {
+            for (i = 0; i < 3; ++i) {
+                tri.pts[i] = vec2_diff(tri_pi->pts[i], *org_i);
+                tri.pts[i] = vec2_new(tri.pts[i].y, -1.0 * tri.pts[i].x);
+                tri.pts[i] = vec2_sum(tri.pts[i], *org_i);
+            }
+        } else {
+            for (i = 0; i < 3; ++i) {
+                tri.pts[i] = vec2_new(tri_pi->pts[i].y, -1.0 * tri_pi->pts[i].x);
+            }
+        }
+    }
+
+    return tri;
+}
+
+tri2_t tri2_rotate_opposite (const tri2_t* tri_pi, const vec2_t* org_i)
+{
+    tri2_t tri;
+    int i = 0;
+
+    if (org_i != NULL) {
+        for (i = 0; i < 3; ++i) {
+            tri.pts[i] = vec2_diff(tri_pi->pts[i], *org_i);
+            tri.pts[i].x = -1.0 * tri.pts[i].x;
+            tri.pts[i].y = -1.0 * tri.pts[i].y;
+            tri.pts[i] = vec2_sum(tri.pts[i], *org_i);
+        }
+    } else {
+        tri.pts[i].x = -1.0 * tri_pi->pts[i].x;
+        tri.pts[i].y = -1.0 * tri_pi->pts[i].y;
+    }
+
+    return tri;
+}

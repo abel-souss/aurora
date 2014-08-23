@@ -16,33 +16,37 @@ EXPORTS
     _Z15math_deg_to_radd @15
     _Z15math_rad_to_degd @16
     _Z15tri2_is_scalenePK9triangle2 @17
-    _Z15vec2_orthogonal7vector2 @18
-    _Z15vec2_rotate_deg7vector2PKS_d @19
-    _Z15vec2_rotate_rad7vector2PKS_d @20
-    _Z17tri2_is_isoscelesPK9triangle2 @21
-    _Z17vec2_is_collinear7vector2S_ @22
-    _Z18vec2_is_orthogonal7vector2S_ @23
-    _Z19tri2_is_equilateralPK9triangle2 @24
-    _Z19vec2_length_squared7vector2 @25
-    _Z20vec2_rotate_opposite7vector2PKS_ @26
-    _Z22vec2_rotate_orthogonal7vector2PKS_i @27
-    _Z8tri2_newPK7vector2S1_S1_ @28
-    _Z8tri2_setP9triangle2PK7vector2S3_S3_ @29
-    _Z8vec2_add7vector2d @30
-    _Z8vec2_dot7vector2S_ @31
-    _Z8vec2_newdd @32
-    _Z8vec2_setP7vector2dd @33
-    _Z8vec2_sub7vector2d @34
-    _Z8vec2_sum7vector2S_ @35
-    _Z9math_sqrtd @36
-    _Z9tri2_areaPK9triangle2 @37
-    _Z9vec2_copyP7vector2S_ @38
-    _Z9vec2_diff7vector2S_ @39
-    _Z9vec2_nullv @40
-    _gmonparam @41 DATA
-    _mcleanup @42
-    mcount @43
-    moncontrol @44
-    monstartup @45
-    profil @46
-    profile_ctl @47
+    _Z15tri2_rotate_degPK9triangle2PK7vector2d @18
+    _Z15tri2_rotate_radPK9triangle2PK7vector2d @19
+    _Z15vec2_orthogonal7vector2 @20
+    _Z15vec2_rotate_deg7vector2PKS_d @21
+    _Z15vec2_rotate_rad7vector2PKS_d @22
+    _Z17tri2_is_isoscelesPK9triangle2 @23
+    _Z17vec2_is_collinear7vector2S_ @24
+    _Z18vec2_is_orthogonal7vector2S_ @25
+    _Z19tri2_is_equilateralPK9triangle2 @26
+    _Z19vec2_length_squared7vector2 @27
+    _Z20tri2_rotate_oppositePK9triangle2PK7vector2 @28
+    _Z20vec2_rotate_opposite7vector2PKS_ @29
+    _Z22tri2_rotate_orthogonalPK9triangle2PK7vector2i @30
+    _Z22vec2_rotate_orthogonal7vector2PKS_i @31
+    _Z8tri2_newPK7vector2S1_S1_ @32
+    _Z8tri2_setP9triangle2PK7vector2S3_S3_ @33
+    _Z8vec2_add7vector2d @34
+    _Z8vec2_dot7vector2S_ @35
+    _Z8vec2_newdd @36
+    _Z8vec2_setP7vector2dd @37
+    _Z8vec2_sub7vector2d @38
+    _Z8vec2_sum7vector2S_ @39
+    _Z9math_sqrtd @40
+    _Z9tri2_areaPK9triangle2 @41
+    _Z9vec2_copyP7vector2S_ @42
+    _Z9vec2_diff7vector2S_ @43
+    _Z9vec2_nullv @44
+    _gmonparam @45 DATA
+    _mcleanup @46
+    mcount @47
+    moncontrol @48
+    monstartup @49
+    profil @50
+    profile_ctl @51

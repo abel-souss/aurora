@@ -20,5 +20,9 @@ int tri2_is_right (const tri2_t* tri_pi);
 int tri2_is_equilateral (const tri2_t* tri_pi);
 int tri2_is_isosceles (const tri2_t* tri_pi);
 int tri2_is_scalene (const tri2_t* tri_pi);
+tri2_t tri2_rotate_deg (const tri2_t* tri_pi, const vec2_t* org_i, const double r);
+tri2_t tri2_rotate_rad (const tri2_t* tri_pi, const vec2_t* org_i, const double r);
+tri2_t tri2_rotate_orthogonal (const tri2_t* tri_pi, const vec2_t* org_i, const int direct);
+tri2_t tri2_rotate_opposite (const tri2_t* tri_pi, const vec2_t* org_i);
 
 #endif
