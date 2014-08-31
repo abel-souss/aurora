@@ -126,6 +126,92 @@ int tri2_is_scalene (const tri2_t* tri_pi)
            (sides[1] != sides[2]);
 }
 
+int tri2_is_congruent (const tri2_t* tri1_pi, const tri2_t* tri2_pi)
+{
+    double sides1[3], sides2[3];
+    int i, j, idx1, idx2;
+    int congruent;
+
+    sides1[0] = vec2_distance(tri1_pi->pts[0], tri1_pi->pts[1]);
+    sides1[1] = vec2_distance(tri1_pi->pts[1], tri1_pi->pts[2]);
+    sides1[2] = vec2_distance(tri1_pi->pts[2], tri1_pi->pts[0]);
+
+    sides2[0] = vec2_distance(tri2_pi->pts[0], tri2_pi->pts[1]);
+    sides2[1] = vec2_distance(tri2_pi->pts[1], tri2_pi->pts[2]);
+    sides2[2] = vec2_distance(tri2_pi->pts[2], tri2_pi->pts[0]);
+
+    congruent = 0;
+
+    for (i = 0; i < 3; ++i) {
+        if (sides1[0] == sides2[i]) {
+            congruent = 1;
+            idx1 = i;
+            break;
+        }
+    }
+
+    if (!congruent) {
+        return 0;
+    }
+
+    congruent = 0;
+
+    for (i = 0; i < 3, i != idx1; ++i) {
+        if (sides1[1] == sides2[i]) {
+            congruent = 1;
+            idx2 = i;
+            break;
+        }
+    }
+
+    if (!congruent) {
+        return 0;
+    }
+
+    congruent = 0;
+
+    for (i = 0; i < 3, i != idx1, i != idx2; ++i) {
+        if (sides1[2] == sides2[i]) {
+            congruent = 1;
+            break;
+        }
+    }
+
+    return congruent;
+}
+
+int tri2_is_similar (const tri2_t* tri1_pi, const tri2_t* tri2_pi)
+{
+    double sides1[3], sides2[3];
+    double ratios[9];
+    int i, j;
+
+    sides1[0] = vec2_distance(tri1_pi->pts[0], tri1_pi->pts[1]);
+    sides1[1] = vec2_distance(tri1_pi->pts[1], tri1_pi->pts[2]);
+    sides1[2] = vec2_distance(tri1_pi->pts[2], tri1_pi->pts[0]);
+
+    sides2[0] = vec2_distance(tri2_pi->pts[0], tri2_pi->pts[1]);
+    sides2[1] = vec2_distance(tri2_pi->pts[1], tri2_pi->pts[2]);
+    sides2[2] = vec2_distance(tri2_pi->pts[2], tri2_pi->pts[0]);
+
+    for (i = 0; i < 3; ++i) {
+        for (j = 0; j < 3; ++j) {
+            ratios[(3 * i) + j] = sides1[i] / sides2[j];
+        }
+    }
+
+    if ((ratios[0] == ratios[4] == ratios[8])
+        || (ratios[0] == ratios[5] == ratios[7])
+        || (ratios[1] == ratios[3] == ratios[8])
+        || (ratios[1] == ratios[5] == ratios[6])
+        || (ratios[2] == ratios[3] == ratios[7])
+        || (ratios[2] == ratios[4] == ratios[6])) {
+        return 1;
+    }
+
+    return 0;
+}
+
 tri2_t tri2_rotate_deg (const tri2_t* tri_pi, const vec2_t* org_i, const double r)
 {
     double a = math_deg_to_rad(r);
