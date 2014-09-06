@@ -42,13 +42,14 @@ EXPORTS
     _Z8vec2_sum7vector2S_ @41
     _Z9math_sqrtd @42
     _Z9tri2_areaPK9triangle2 @43
-    _Z9vec2_copyP7vector2S_ @44
-    _Z9vec2_diff7vector2S_ @45
-    _Z9vec2_nullv @46
-    _gmonparam @47 DATA
-    _mcleanup @48
-    mcount @49
-    moncontrol @50
-    monstartup @51
-    profil @52
-    profile_ctl @53
+    _Z9tri2_movePK9triangle2PK7vector2 @44
+    _Z9vec2_copyP7vector2S_ @45
+    _Z9vec2_diff7vector2S_ @46
+    _Z9vec2_nullv @47
+    _gmonparam @48 DATA
+    _mcleanup @49
+    mcount @50
+    moncontrol @51
+    monstartup @52
+    profil @53
+    profile_ctl @54
